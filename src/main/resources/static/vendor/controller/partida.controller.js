@@ -23,7 +23,7 @@ stefanini.controller('partidaController', ['$scope', '$state', '$cookieStore', '
 		resetar();
 
 		$scope.duelar = function () {
-			$scope.messages = "Aguarde que estamos processando...";
+			$scope.messages = "";
 			$scope.visibleMessage = true;
 			$scope.cssMessage = "message-table-correct";
 			partidaService.getHerois(util.getUri()).success(function (data, status, headers, config) {

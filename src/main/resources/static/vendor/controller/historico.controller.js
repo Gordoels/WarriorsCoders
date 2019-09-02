@@ -9,7 +9,7 @@ stefanini.controller('historicoController', ['$scope', '$state', '$cookieStore',
 
 			if ($scope.mensagem.length == 0) {
 
-				$scope.mensagem = "Não existe duelos!!";
+				$scope.mensagem = "";
 				$scope.visibleMensagem = true;
 			} else {
 				$scope.visibleMensagem = false;

@@ -17,7 +17,7 @@ public class PersonagemBO {
 	
 	private static List<PersonagemDto> dadoHerois;
 
-	public static List<PersonagemDto> getDadoHerois() {
+	public static List<PersonagemDto> getDadoHerois() { //apenas retorna a lista
 		return dadoHerois;
 	}
 	

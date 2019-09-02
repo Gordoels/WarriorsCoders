@@ -21,7 +21,7 @@ public class DueloController {
 	
 	DueloBO dueloBo = new DueloBO();
 
-	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE) //randomizando os heróis 
 	public DueloDto randomHerois() throws IOException {
 		return dueloBo.createDuelo();
 	}
@@ -38,13 +38,13 @@ public class DueloController {
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/mutante", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, value = "/mutante", produces = MediaType.APPLICATION_JSON_VALUE) //buscando o mutante
 	public PersonagemDto getMutante() throws IOException {
 		
 		return dueloBo.getMutante();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/historico", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, value = "/historico", produces = MediaType.APPLICATION_JSON_VALUE) //mostrando o histórico
 	public List<DueloDto> getHistorico() throws IOException {
 		
 		return dueloBo.getHistorico();

@@ -15,7 +15,7 @@ stefanini.controller('dueloController', ['$scope', '$state', '$cookieStore', 'ut
 		$scope.duelar = function () {
 			dueloService.novoDuelo(util.getUri());
 			$scope.herois = [];
-			$scope.messages = "Aguarde que estamos processando...";
+			$scope.messages = "";
 			$scope.visibleMessage = true;
 			$scope.cssMessage = "message-table-correct";
 			dueloService.getDuelo(util.getUri()).success(function(data, status, headers, config) {
