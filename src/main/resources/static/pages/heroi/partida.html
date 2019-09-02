@@ -3,7 +3,7 @@
 		<div ng-controller="abstractController">
 			<menu></menu>
 		</div>
-		<div class="text-app-titulo text-center"><h1>Partidas</h1></div>
+		<div class="text-app-titulo text-center bg-ki"><h1>Partidas</h1></div>
 		<form ng-controller="partidaController">
 			<div class="container">
 				<div ng-class="cssMessage" ng-show="visibleMessage">{{messages}}</div>
@@ -13,7 +13,7 @@
 					<button type="button" class="btn btn-outline-secondary btn-block" ng-click="duelar()">Batalhar</button>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container  bg-kk">
 				<div ng-repeat="heroi in herois track by $index">
 					<br> <b>PARTIDA {{$index+1}}</b> <br>
 					<p class="text-center">
@@ -29,9 +29,8 @@
 								Habilidade: </b>{{heroi.personagens[0].habilidades[heroi.forca]}}<br>
 						</div>
 						<div class="col-3">
-							<p
-								style="font-size: 45px; text-align: center; word-spacing: 10px;">
-								<font color="red">VS</font>
+							<p style="font-size: 45px; text-align: center; word-spacing: 10px; text-shadow: 3px 3px 3px #000000;">
+								<font color="yellow" >Versus</font>
 							</p>
 						</div>
 						<div class="col" style="background-color: #FFFFFF;">

@@ -54,3 +54,32 @@ margin: auto;
   width: 60%;
   padding: 10px;
 }
+
+body, html {
+  height: 100%;
+}
+
+.bg-kk { 
+  /* The image used */
+  background-image: url("http://getwallpapers.com/wallpaper/full/b/b/2/484854.jpg");
+
+  /* Full height */
+  
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  
+ 
+}
+
+.bg-ki{
+	background-image: url("https://wallpaper-gallery.net/images/marvel-vs-capcom-wallpaper/marvel-vs-capcom-wallpaper-15.png");
+
+  /* Full height */
+   
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
