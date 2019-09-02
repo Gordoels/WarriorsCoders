@@ -3,15 +3,14 @@
 		<div ng-controller="abstractController">
 			<menu></menu>
 		</div>
-		<div class="text-app-titulo">| Partida |</div>
+		<div class="text-app-titulo text-center"><h1>Partidas</h1></div>
 		<form ng-controller="partidaController">
 			<div class="container">
 				<div ng-class="cssMessage" ng-show="visibleMessage">{{messages}}</div>
 			</div>
 			<div ng-show="visibleBotaoDuelo">
 				<div class="w-75 p-3 center">
-					<button type="button" id="button"
-						class="btn btn-dark btn-lg btn-block" ng-click="duelar()">Duelar</button>
+					<button type="button" class="btn btn-outline-secondary btn-block" ng-click="duelar()">Batalhar</button>
 				</div>
 			</div>
 			<div class="container">

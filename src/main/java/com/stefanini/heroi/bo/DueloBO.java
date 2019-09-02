@@ -15,16 +15,17 @@ import com.stefanini.heroi.util.PersonagemUtil;
 /**
  * Classe responsável pelos duelos
  * 
- * @author Breno
+ * @author Gordoel
  *
  */
 
 public class DueloBO {
 
-	private Integer x[] = new Integer[2];
+	
 	private PartidaDto partida;
 	private List<PersonagemDto> jogadoresData;
-	Integer qtdDuelos = 0;
+	private Integer x[] = new Integer[2]; //começando no index 2 para buscar apenas os poderes
+	Integer nPartidas = 0;
 	private List<DueloDto> historicoDuelos = new ArrayList<DueloDto>();
 	Random random = new Random();
 
@@ -70,7 +71,7 @@ public class DueloBO {
 		historicoDuelos.add(duelo);
 		partida.setDuelos(duelo);
 
-		qtdDuelos++;
+		nPartidas++;
 		return duelo;
 	}
 

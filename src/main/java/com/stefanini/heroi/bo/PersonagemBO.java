@@ -14,7 +14,7 @@ import com.stefanini.heroi.util.BancoMemoriaUtil;
 /**
  * Classe responsável pelos personagens
  * 
- * @author Breno
+ * @author Gordoel
  *
  */
 
