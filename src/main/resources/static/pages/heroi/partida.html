@@ -3,7 +3,7 @@
 		<div ng-controller="abstractController">
 			<menu></menu>
 		</div>
-		<div class="text-app-titulo text-center bg-ki"><h1>Partidas</h1></div>
+		<div class="text-app-titulo text-center bg-ki skeme"><h1>Partidas</h1></div>
 		<form ng-controller="partidaController">
 			<div class="container">
 				<div ng-class="cssMessage" ng-show="visibleMessage">{{messages}}</div>
@@ -15,12 +15,12 @@
 			</div>
 			<div class="container  bg-kk">
 				<div ng-repeat="heroi in herois track by $index">
-					<br> <b>PARTIDA {{$index+1}}</b> <br>
-					<p class="text-center">
+					<br> <b class="skeme">PARTIDA {{$index+1}}</b> <br>
+					<p class="text-center skeme" style ="font-size: 30px">
 						<b>Habilidade Sorteada: {{heroi.forca}}</b>
 					</p>
 					<div class="row">
-						<div class="col" style="background-color: #FFFFFF;">
+						<div class="col skemem" style="background-color: ;">
 							<p>
 								<b>Heroi 1</b>
 							</p>
@@ -33,7 +33,7 @@
 								<font color="yellow" >Versus</font>
 							</p>
 						</div>
-						<div class="col" style="background-color: #FFFFFF;">
+						<div class="col skemem" style="background-color: ;">
 							<p>
 								<b>Heroi 2</b>
 							</p>
@@ -44,7 +44,7 @@
 					</div>
 
 					<br>
-					<div>O ganhador dessa partida foi: {{heroi.vitorioso.nome}}</div>
+					<div class="skemem" style ="font-size: 20px">VENCEU: {{heroi.vitorioso.nome}}</div>
 
 				</div>
 
@@ -92,7 +92,7 @@
 					</div>
 				</div>
 				<br>
-				<div ng-show=visibleMutante>
+				<div ng-show=visibleMutante class="skemem">
 					<p>
 						<b>Heroi Mutante</b>
 					</p>

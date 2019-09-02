@@ -1,42 +1,20 @@
 # Projeto do Warriors Coders 2019
-# Spring Boot support for legacy WebLogic
-An example of a spring boot application that can be deployed to a legacy WebLogic server (11g and below) which uses servlet 2.5 api
 
-## Dependencies
+Utilizando Spring Boot e AngularJS
 
-- __spring-boot-starter-parent__: Using version 1.1.12 for Java SE 6 compatibility 1.1.12.RELEASE
-- __servlet-api__: Using version 2.5 supported by legacy WebLogic servers 11g and below
-- __spring-boot-legacy__: Using version 1.0.4 support for legacy (Servlet 2.5) apps in Spring Boot [https://github.com/dsyer/spring-boot-legacy]
-   
-## Running the Application
+# Considerações
 
-__You do not run this application by executing the main method in `SpringBootWebLogicLegacyApplication.java`. Please read these instructions to launch this application__
-
-To run the application:
-
-Execute the following commands
+ O código original é de autoria da Stefanini
  
-`cd ~/spring-boot-legacy-weblogic`
+ Back-end Java
+ Front-end AngularJS
 
-`mvn spring-boot:run`
+# Observações
+ 
+ Para rodar a aplicação:
 
-## Building the WAR
+ Execute os seguintes comandos
 
-__Use the standard Maven Lifecycle "package" goal to create the WAR.__
+ cd ~/spring-boot-legacy-weblogic
 
-Note the following commands will fail due to the `spring-boot-starter-tomcat` dependency being given the scope of provided.
-
-`mvn spring-boot:repackage`
-
-## Accessing the Service
-
-Running locally
-
-http://localhost:8080/spring-boot-legacy-app
-
-Running from WebLogic
-
-http://{webLogicServerAddress}:{port}/spring-boot-legacy-app
-
-If you see "Hello World!" then everything is working correctly
-
+ mvn spring-boot:run
