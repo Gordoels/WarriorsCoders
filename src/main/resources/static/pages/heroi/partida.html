@@ -3,34 +3,45 @@
 		<div ng-controller="abstractController">
 			<menu></menu>
 		</div>
-		<div class="text-app-titulo"> | Partida |</div>
+		<div class="text-app-titulo">| Partida |</div>
 		<form ng-controller="partidaController">
 			<div class="container">
 				<div ng-class="cssMessage" ng-show="visibleMessage">{{messages}}</div>
 			</div>
+			<div ng-show="visibleBotaoDuelo">
+				<div class="w-75 p-3 center">
+					<button type="button" id="button"
+						class="btn btn-dark btn-lg btn-block" ng-click="duelar()">Duelar</button>
+				</div>
+			</div>
 			<div class="container">
 				<div ng-repeat="heroi in herois track by $index">
-					<br>
-					<b>PARTIDA {{$index+1}}</b>
-					<br>
-					<p class="text-center"><b>Habilidade Sorteada: {{heroi.forca}}</b></p>
+					<br> <b>PARTIDA {{$index+1}}</b> <br>
+					<p class="text-center">
+						<b>Habilidade Sorteada: {{heroi.forca}}</b>
+					</p>
 					<div class="row">
-						<div class="col" style="background-color:#DCDCDC;">
-							<p><b>Heroi 1</b></p>
-							<b>Nome: </b>{{heroi.personagens[0].nome}}<br>
-							<b>Alinhamento: </b>{{heroi.personagens[0].alinhamento}}<br>
-							<b>Valor da Habilidade: </b>{{heroi.personagens[0].habilidades[heroi.forca]}}<br>
+						<div class="col" style="background-color: #DCDCDC;">
+							<p>
+								<b>Heroi 1</b>
+							</p>
+							<b>Nome: </b>{{heroi.personagens[0].nome}}<br> <b>Alinhamento:
+							</b>{{heroi.personagens[0].alinhamento}}<br> <b>Valor da
+								Habilidade: </b>{{heroi.personagens[0].habilidades[heroi.forca]}}<br>
 						</div>
 						<div class="col-3">
-							<p style="font-size: 45px; text-align: center; word-spacing: 10px;">
+							<p
+								style="font-size: 45px; text-align: center; word-spacing: 10px;">
 								<font color="red">VS</font>
 							</p>
 						</div>
-						<div class="col" style="background-color:#DCDCDC;">
-							<p><b>Heroi 2</b></p>
-							<b>Nome: </b>{{heroi.personagens[1].nome}}<br>
-							<b>Alinhamento: </b>{{heroi.personagens[1].alinhamento}}<br>
-							<b>Valor da Habilidade: </b>{{heroi.personagens[1].habilidades[heroi.forca]}}<br>
+						<div class="col" style="background-color: #DCDCDC;">
+							<p>
+								<b>Heroi 2</b>
+							</p>
+							<b>Nome: </b>{{heroi.personagens[1].nome}}<br> <b>Alinhamento:
+							</b>{{heroi.personagens[1].alinhamento}}<br> <b>Valor da
+								Habilidade: </b>{{heroi.personagens[1].habilidades[heroi.forca]}}<br>
 						</div>
 					</div>
 
@@ -38,41 +49,37 @@
 					<div>O ganhador dessa partida foi: {{heroi.ganhador.nome}}</div>
 
 				</div>
-				<div ng-show="visibleBotaoDuelo">
-					<div class="w-75 p-3 center">
-						<button type="button" id="button" class="btn btn-dark btn-lg btn-block" ng-click="duelar()">Duelar</button>
-					</div>
-				</div>
+
 
 				<div ng-show="visibleVencedores">
-					<br>
-					<font face="verdana" color="red">A Partida de 10 Jogadas finalizou. <br> Os Ganhadores foram:</font>
-					<br>
+					<br> <font face="verdana" color="red">A Partida de 10
+						Jogadas finalizou. <br> Os Ganhadores foram:
+					</font> <br>
 					<div class="row" Style="border: 3px solid rgb(149, 255, 0)">
 
-						<div class="col" style="background-color:rgb(147, 233, 161);">
-							<p><b>Primeiro Lugar:</b></p>
-							<font color="red">Número de vitórias: </b>{{vencedores[0].vitorias}}</font><br>
-							<b>Nome: </b>{{vencedores[0].nome}}<br>
-							<b>Alinhamento: </b>{{vencedores[0].alinhamento}}<br>
-							<b>Combate: </b>{{vencedores[0].habilidades.combate}}<br>
-							<b>Defesa: </b>{{vencedores[0].habilidades.defesa}}<br>
-							<b>Destreza: </b>{{vencedores[0].habilidades.destreza}}<br>
-							<b>Força: </b>{{vencedores[0].habilidades.forca}}<br>
+						<div class="col" style="background-color: rgb(147, 233, 161);">
+							<p>
+								<b>Primeiro Lugar:</b>
+							</p>
+							<font color="red">Número de vitórias: </b>{{vencedores[0].vitorias}}
+							</font><br> <b>Nome: </b>{{vencedores[0].nome}}<br> <b>Alinhamento:
+							</b>{{vencedores[0].alinhamento}}<br> <b>Combate: </b>{{vencedores[0].habilidades.combate}}<br>
+							<b>Defesa: </b>{{vencedores[0].habilidades.defesa}}<br> <b>Destreza:
+							</b>{{vencedores[0].habilidades.destreza}}<br> <b>Força: </b>{{vencedores[0].habilidades.forca}}<br>
 							<b>Inteligência: </b>{{vencedores[0].habilidades.inteligencia}}<br>
 							<b>Poder: </b>{{vencedores[0].habilidades.poder}}<br>
 
 						</div>
-						<div class="col-3" style="background-color:rgb(147, 233, 161)"></div>
-						<div class="col" style="background-color:rgb(147, 233, 161);">
-							<p><b>Segundo Lugar:</b></p>
-							<font color="red">Número de vitórias: </b>{{vencedores[1].vitorias}}</font><br>
-							<b>Nome: </b>{{vencedores[1].nome}}<br>
-							<b>Alinhamento: </b>{{vencedores[1].alinhamento}}<br>
-							<b>Combate: </b>{{vencedores[1].habilidades.combate}}<br>
-							<b>Defesa: </b>{{vencedores[1].habilidades.defesa}}<br>
-							<b>Destreza: </b>{{vencedores[1].habilidades.destreza}}<br>
-							<b>Força: </b>{{vencedores[1].habilidades.forca}}<br>
+						<div class="col-3" style="background-color: rgb(147, 233, 161)"></div>
+						<div class="col" style="background-color: rgb(147, 233, 161);">
+							<p>
+								<b>Segundo Lugar:</b>
+							</p>
+							<font color="red">Número de vitórias: </b>{{vencedores[1].vitorias}}
+							</font><br> <b>Nome: </b>{{vencedores[1].nome}}<br> <b>Alinhamento:
+							</b>{{vencedores[1].alinhamento}}<br> <b>Combate: </b>{{vencedores[1].habilidades.combate}}<br>
+							<b>Defesa: </b>{{vencedores[1].habilidades.defesa}}<br> <b>Destreza:
+							</b>{{vencedores[1].habilidades.destreza}}<br> <b>Força: </b>{{vencedores[1].habilidades.forca}}<br>
 							<b>Inteligência: </b>{{vencedores[1].habilidades.inteligencia}}<br>
 							<b>Poder: </b>{{vencedores[1].habilidades.poder}}<br>
 						</div>
@@ -82,28 +89,27 @@
 				<div ng-show="visibleBotaoMutante">
 					<div class="w-75 p-3 center">
 
-						<button type="button" class="btn btn-lg btn-block btn-danger" ng-click="criarMutante()">Criar
-							Mutante</button>
+						<button type="button" class="btn btn-lg btn-block btn-danger"
+							ng-click="criarMutante()">Criar Mutante</button>
 					</div>
 				</div>
 				<br>
 				<div ng-show=visibleMutante>
-					<p><b>Heroi Mutante</b></p>
-					<b>Nome: </b>{{mutante.nome}}<br>
-					<b>Alinhamento: </b>{{hmutante.alinhamento}}<br>
-					<b>Combate:</b> {{mutante.habilidades.combate}}<br>
-					<b>Defesa:</b> {{mutante.habilidades.defesa}}<br>
-					<b>Destreza:</b> {{mutante.habilidades.destreza}}<br>
-					<b>Força:</b> {{mutante.habilidades.forca}}<br>
-					<b>Inteligência:</b> {{mutante.habilidades.inteligencia}}<br>
-					<b>Poder:</b> {{mutante.habilidades.poder}}
+					<p>
+						<b>Heroi Mutante</b>
+					</p>
+					<b>Nome: </b>{{mutante.nome}}<br> <b>Alinhamento: </b>{{hmutante.alinhamento}}<br>
+					<b>Combate:</b> {{mutante.habilidades.combate}}<br> <b>Defesa:</b>
+					{{mutante.habilidades.defesa}}<br> <b>Destreza:</b>
+					{{mutante.habilidades.destreza}}<br> <b>Força:</b>
+					{{mutante.habilidades.forca}}<br> <b>Inteligência:</b>
+					{{mutante.habilidades.inteligencia}}<br> <b>Poder:</b>
+					{{mutante.habilidades.poder}}
 				</div>
-				<br>
-				<br>
+				<br> <br>
 			</div>
-		  </head>
-		  <body>
-	
+			</head>
+			<body>
 		</form>
 	</div>
 </body>
