@@ -23,7 +23,7 @@ public class DueloBO {
 
 	private PartidaDto partida;
 	private List<PersonagemDto> dadoHerois;
-	private Integer x[] = new Integer[2]; // começando no index 2 para buscar apenas os poderes
+	private Integer x[] = new Integer[2]; //2 habilidades
 	private List<DueloDto> historicoBatalhas = new ArrayList<DueloDto>();
 	Random rm = new Random();
 	Integer nPartidas = 0;
@@ -37,28 +37,26 @@ public class DueloBO {
 	public DueloDto createDuelo() {
 
 		List<String> skills = Arrays.asList("inteligencia", "forca", "defesa", "destreza", "poder", "combate");
-		String habilidadeEscolhida = skills.get(new Random().nextInt(skills.size())); //randomizando a habilidade a ser escolhida
+		String habilidadeEscolhida = skills.get(new Random().nextInt(skills.size())); // randomizando a habilidade a ser
+																						// escolhida
 		PersonagemDto vitorioso;
 
-		List<PersonagemDto> herois = heroiRandom(); //instanciando lista de herois aleatórios
+		List<PersonagemDto> herois = heroiRandom(); // instanciando lista de herois aleatórios
 
 		DueloDto duelo = new DueloDto(herois);
 
-		if (dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) > dadoHerois.get(x[1]).getHabilidades()
-				.get(habilidadeEscolhida)) {
+		//incrementando e decrementando
+		if (dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) > dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida)) {
 
-			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,
-					dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) + 2);
-			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,
-					dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) - 2);
+			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) + 2);
+			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) - 2);
 
 			vitorioso = dadoHerois.get(x[0]);
-		} else {
+		} 
+		else{
 
-			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,
-					dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) - 2);
-			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,
-					dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) + 2);
+			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) - 2);
+			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) + 2);
 
 			vitorioso = dadoHerois.get(x[1]);
 		}
@@ -85,34 +83,35 @@ public class DueloBO {
 
 			boolean ok = true;
 
-			while (x[0] == x[1] || ok) {
+			while (x[0] == x[1] || ok) { //garantindo que não haverá empates
 				x[0] = rm.nextInt(dadoHerois.size());
 				x[1] = rm.nextInt(dadoHerois.size());
 
-				if (!dadoHerois.get(x[0]).getAlinhamento().equals(dadoHerois.get(x[1]).getAlinhamento()))
+				if (!dadoHerois.get(x[0]).getAlinhamento().equals(dadoHerois.get(x[1]).getAlinhamento())) //garantindo que são de alinhamento diferentes
 					ok = false;
 			}
 			dadoHerois.get(x[0]).setId(x[0]);
 			dadoHerois.get(x[1]).setId(x[1]);
 			herois = Arrays.asList(dadoHerois.get(x[0]), dadoHerois.get(x[1]));
 			return herois;
-		} else {
-			PersonagemDto ganhadorDueloAnterior = partida.getDuelos().get(partida.getDuelos().size() - 1).getVitorioso();
+		} 
+		else {
+			PersonagemDto ganhadorBatalhaAnterior = partida.getDuelos().get(partida.getDuelos().size() - 1).getVitorioso();
 			List<PersonagemDto> herois = null;
 
 			Integer x1 = null;
 			boolean ok = true;
 
-			while (ganhadorDueloAnterior.getId().equals(x1) || ok) {
+			while (ganhadorBatalhaAnterior.getId().equals(x1) || ok) {
 
 				x1 = rm.nextInt(dadoHerois.size());
-				if (!ganhadorDueloAnterior.getAlinhamento().equals(dadoHerois.get(x1).getAlinhamento()))
+				if (!ganhadorBatalhaAnterior.getAlinhamento().equals(dadoHerois.get(x1).getAlinhamento()))
 					ok = false;
 			}
 
 			dadoHerois.get(x1).setId(x1);
-			herois = Arrays.asList(ganhadorDueloAnterior, dadoHerois.get(x1));
-			x[0] = ganhadorDueloAnterior.getId();
+			herois = Arrays.asList(ganhadorBatalhaAnterior, dadoHerois.get(x1));
+			x[0] = ganhadorBatalhaAnterior.getId();
 			x[1] = x1;
 			return herois;
 		}

@@ -39,6 +39,4 @@ Running from WebLogic
 http://{webLogicServerAddress}:{port}/spring-boot-legacy-app
 
 If you see "Hello World!" then everything is working correctly
-=======
 
->>>>>>> 17ce3be8b8771ebe802cffd906645ac03862d6e8
