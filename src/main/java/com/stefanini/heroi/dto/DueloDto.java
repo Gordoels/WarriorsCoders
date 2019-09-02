@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DueloDto {
-	
+
 	private List<PersonagemDto> personagens = new ArrayList<PersonagemDto>();
-	private PersonagemDto ganhador;
+	private PersonagemDto vitorioso;
 	private String forca;
 
-	public PersonagemDto getGanhador() {
-		return ganhador;
+	public PersonagemDto getVitorioso() {
+		return vitorioso;
 	}
-	
+
 	public DueloDto(List<PersonagemDto> personagens) {
 		this.personagens = personagens;
 	}
@@ -20,10 +20,11 @@ public class DueloDto {
 	public List<PersonagemDto> getPersonagens() {
 		return personagens;
 	}
-	
+
 	public void setForca(String forca) {
 		this.forca = forca;
 	}
+
 	public String getForca() {
 		return forca;
 	}
@@ -32,11 +33,11 @@ public class DueloDto {
 		this.personagens = personagens;
 	}
 
-	public PersonagemDto ganhador() {
-		return this.ganhador;
+	public PersonagemDto vitorioso() {
+		return this.vitorioso;
 	}
 
-	public void setGanhador(PersonagemDto ganhador) {
-		this.ganhador = ganhador;
+	public void setVitorioso(PersonagemDto vitorioso) {
+		this.vitorioso = vitorioso;
 	}
 }

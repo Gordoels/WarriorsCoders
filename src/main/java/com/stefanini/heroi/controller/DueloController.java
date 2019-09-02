@@ -23,7 +23,7 @@ public class DueloController {
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public DueloDto randomHerois() throws IOException {
-		return dueloBo.criaDuelo();
+		return dueloBo.createDuelo();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/vencedores", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -21,54 +21,52 @@ import com.stefanini.heroi.util.PersonagemUtil;
 
 public class DueloBO {
 
-	
 	private PartidaDto partida;
-	private List<PersonagemDto> jogadoresData;
-	private Integer x[] = new Integer[2]; //começando no index 2 para buscar apenas os poderes
+	private List<PersonagemDto> dadoHerois;
+	private Integer x[] = new Integer[2]; // começando no index 2 para buscar apenas os poderes
+	private List<DueloDto> historicoBatalhas = new ArrayList<DueloDto>();
+	Random rm = new Random();
 	Integer nPartidas = 0;
-	private List<DueloDto> historicoDuelos = new ArrayList<DueloDto>();
-	Random random = new Random();
 
 	public DueloBO() {
 
 		partida = new PartidaDto();
-		jogadoresData = PersonagemBO.getJogadoresData();
+		dadoHerois = PersonagemBO.getDadoHerois();
 	}
 
-	public DueloDto criaDuelo() {
+	public DueloDto createDuelo() {
 
-		List<PersonagemDto> herois;
-		List<String> keyPoderes = Arrays.asList("inteligencia", "forca", "defesa", "destreza", "poder", "combate");
-		String habilidadeRandom = keyPoderes.get(new Random().nextInt(keyPoderes.size()));
-		PersonagemDto ganhador;
+		List<String> skills = Arrays.asList("inteligencia", "forca", "defesa", "destreza", "poder", "combate");
+		String habilidadeEscolhida = skills.get(new Random().nextInt(skills.size())); //randomizando a habilidade a ser escolhida
+		PersonagemDto vitorioso;
 
-		herois = randomHeroi();
+		List<PersonagemDto> herois = heroiRandom(); //instanciando lista de herois aleatórios
 
 		DueloDto duelo = new DueloDto(herois);
 
-		if (jogadoresData.get(x[0]).getHabilidades().get(habilidadeRandom) > jogadoresData.get(x[1]).getHabilidades()
-				.get(habilidadeRandom)) {
+		if (dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) > dadoHerois.get(x[1]).getHabilidades()
+				.get(habilidadeEscolhida)) {
 
-			jogadoresData.get(x[0]).getHabilidades().replace(habilidadeRandom,
-					jogadoresData.get(x[0]).getHabilidades().get(habilidadeRandom) + 2);
-			jogadoresData.get(x[1]).getHabilidades().replace(habilidadeRandom,
-					jogadoresData.get(x[1]).getHabilidades().get(habilidadeRandom) - 2);
+			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,
+					dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) + 2);
+			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,
+					dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) - 2);
 
-			ganhador = jogadoresData.get(x[0]);
+			vitorioso = dadoHerois.get(x[0]);
 		} else {
 
-			jogadoresData.get(x[0]).getHabilidades().replace(habilidadeRandom,
-					jogadoresData.get(x[0]).getHabilidades().get(habilidadeRandom) - 2);
-			jogadoresData.get(x[1]).getHabilidades().replace(habilidadeRandom,
-					jogadoresData.get(x[1]).getHabilidades().get(habilidadeRandom) + 2);
+			dadoHerois.get(x[0]).getHabilidades().replace(habilidadeEscolhida,
+					dadoHerois.get(x[0]).getHabilidades().get(habilidadeEscolhida) - 2);
+			dadoHerois.get(x[1]).getHabilidades().replace(habilidadeEscolhida,
+					dadoHerois.get(x[1]).getHabilidades().get(habilidadeEscolhida) + 2);
 
-			ganhador = jogadoresData.get(x[1]);
+			vitorioso = dadoHerois.get(x[1]);
 		}
-		ganhador.setVitorias();
+		vitorioso.setVitorias();
 
-		duelo.setGanhador(ganhador);
-		duelo.setForca(habilidadeRandom);
-		historicoDuelos.add(duelo);
+		duelo.setVitorioso(vitorioso);
+		duelo.setForca(habilidadeEscolhida);
+		historicoBatalhas.add(duelo);
 		partida.setDuelos(duelo);
 
 		nPartidas++;
@@ -77,10 +75,10 @@ public class DueloBO {
 
 	public List<DueloDto> getHistorico() {
 
-		return historicoDuelos;
+		return historicoBatalhas;
 	}
 
-	private List<PersonagemDto> randomHeroi() {
+	private List<PersonagemDto> heroiRandom() {
 
 		if (partida.getDuelos().isEmpty()) {
 			List<PersonagemDto> herois = null;
@@ -88,18 +86,18 @@ public class DueloBO {
 			boolean ok = true;
 
 			while (x[0] == x[1] || ok) {
-				x[0] = random.nextInt(jogadoresData.size());
-				x[1] = random.nextInt(jogadoresData.size());
+				x[0] = rm.nextInt(dadoHerois.size());
+				x[1] = rm.nextInt(dadoHerois.size());
 
-				if (!jogadoresData.get(x[0]).getAlinhamento().equals(jogadoresData.get(x[1]).getAlinhamento()))
+				if (!dadoHerois.get(x[0]).getAlinhamento().equals(dadoHerois.get(x[1]).getAlinhamento()))
 					ok = false;
 			}
-			jogadoresData.get(x[0]).setId(x[0]);
-			jogadoresData.get(x[1]).setId(x[1]);
-			herois = Arrays.asList(jogadoresData.get(x[0]), jogadoresData.get(x[1]));
+			dadoHerois.get(x[0]).setId(x[0]);
+			dadoHerois.get(x[1]).setId(x[1]);
+			herois = Arrays.asList(dadoHerois.get(x[0]), dadoHerois.get(x[1]));
 			return herois;
 		} else {
-			PersonagemDto ganhadorDueloAnterior = partida.getDuelos().get(partida.getDuelos().size() - 1).getGanhador();
+			PersonagemDto ganhadorDueloAnterior = partida.getDuelos().get(partida.getDuelos().size() - 1).getVitorioso();
 			List<PersonagemDto> herois = null;
 
 			Integer x1 = null;
@@ -107,13 +105,13 @@ public class DueloBO {
 
 			while (ganhadorDueloAnterior.getId().equals(x1) || ok) {
 
-				x1 = random.nextInt(jogadoresData.size());
-				if (!ganhadorDueloAnterior.getAlinhamento().equals(jogadoresData.get(x1).getAlinhamento()))
+				x1 = rm.nextInt(dadoHerois.size());
+				if (!ganhadorDueloAnterior.getAlinhamento().equals(dadoHerois.get(x1).getAlinhamento()))
 					ok = false;
 			}
 
-			jogadoresData.get(x1).setId(x1);
-			herois = Arrays.asList(ganhadorDueloAnterior, jogadoresData.get(x1));
+			dadoHerois.get(x1).setId(x1);
+			herois = Arrays.asList(ganhadorDueloAnterior, dadoHerois.get(x1));
 			x[0] = ganhadorDueloAnterior.getId();
 			x[1] = x1;
 			return herois;
@@ -149,7 +147,7 @@ public class DueloBO {
 
 		partida = new PartidaDto();
 		try {
-			jogadoresData = new PersonagemUtil().carregaCSV();
+			dadoHerois = new PersonagemUtil().carregaCSV();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
