@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Spring Boot support for legacy WebLogic
 An example of a spring boot application that can be deployed to a legacy WebLogic server (11g and below) which uses servlet 2.5 api
 
@@ -38,3 +39,6 @@ Running from WebLogic
 http://{webLogicServerAddress}:{port}/spring-boot-legacy-app
 
 If you see "Hello World!" then everything is working correctly
+=======
+
+>>>>>>> 17ce3be8b8771ebe802cffd906645ac03862d6e8
