@@ -8,7 +8,7 @@ stefanini.config(['$stateProvider', '$urlRouterProvider', '$routeProvider', func
 	 
 	$stateProvider.state('/', {
 	   url: '/',
-	   templateUrl : 'pages/heroi/duelo.html',
+	   templateUrl : 'pages/heroi/partida.html',
 	   controller : 'dueloController',
 	}).state('partida', {
 	   url: '/partida',
